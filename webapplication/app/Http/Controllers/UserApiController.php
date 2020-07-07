@@ -20,7 +20,7 @@ class UserApiController extends Controller
 
             try {
                 if (! $token = JWTAuth::attempt($credentials)) {
-                    return response()->json(['error' => 'invalid_credentials'], 400);
+                    return response()->json(['error' => 'Invalid Details'], 400);
                 }
             } catch (JWTException $e) {
                 return response()->json(['error' => 'could_not_create_token'], 500);
