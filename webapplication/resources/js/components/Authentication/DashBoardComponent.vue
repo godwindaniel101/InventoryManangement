@@ -80,11 +80,11 @@
               </div>
             </div>
           </div>
-          <div class="dropdown" :class="openDrop.fold_1 ? 'dropdown-open' :' '">
+          <div class="Controldrop" :class="openDrop.fold_1 ? 'Controldrop-open' :' '">
             <ul>
               <router-link to="/dashboard/sales/makesales" tag="li">
-                <div class="nav-link-dropdown">
-                  <div class="nav-icon-dropdown">
+                <div class="nav-link-Controldrop">
+                  <div class="nav-icon-Controldrop">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="icon icon-tabler icon-tabler-shopping-cart"
@@ -103,12 +103,12 @@
                       <path d="M3 3h2l2 12a3 3 0 0 0 3 2h7a3 3 0 0 0 3 -2l1 -7h-15.2" />
                     </svg>
                   </div>
-                  <div class="nav-text-dropdown">Make Sale</div>
+                  <div class="nav-text-Controldrop">Make Sale</div>
                 </div>
               </router-link>
               <router-link to="/dashboard/sales/viewsales" tag="li">
-                <div class="nav-link-dropdown">
-                  <div class="nav-icon-dropdown">
+                <div class="nav-link-Controldrop">
+                  <div class="nav-icon-Controldrop">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="icon icon-tabler icon-tabler-arrows-maximize"
@@ -132,12 +132,12 @@
                       <line x1="4" y1="4" x2="10" y2="10" />
                     </svg>
                   </div>
-                  <div class="nav-text-dropdown">View Sales</div>
+                  <div class="nav-text-Controldrop">View Sales</div>
                 </div>
               </router-link>
               <router-link to="/dashboard/sales/todaysales" tag="li">
-                <div class="nav-link-dropdown">
-                  <div class="nav-icon-dropdown">
+                <div class="nav-link-Controldrop">
+                  <div class="nav-icon-Controldrop">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="icon icon-tabler icon-tabler-clipboard"
@@ -157,7 +157,7 @@
                       <rect x="9" y="3" width="6" height="4" rx="2" />
                     </svg>
                   </div>
-                  <div class="nav-text-dropdown">Today Sale</div>
+                  <div class="nav-text-Controldrop">Today Sale</div>
                 </div>
               </router-link>
             </ul>
@@ -209,11 +209,11 @@
               </div>
             </div>
           </div>
-          <div class="dropdown" :class="openDrop.fold_2 ? 'dropdown-open' :' '">
+          <div class="Controldrop" :class="openDrop.fold_2 ? 'Controldrop-open' :' '">
             <ul>
               <router-link to="/dashboard/purchase/makepurchase" tag="li">
-                <div class="nav-link-dropdown">
-                  <div class="nav-icon-dropdown">
+                <div class="nav-link-Controldrop">
+                  <div class="nav-icon-Controldrop">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="icon icon-tabler icon-tabler-shopping-cart"
@@ -232,12 +232,12 @@
                       <path d="M3 3h2l2 12a3 3 0 0 0 3 2h7a3 3 0 0 0 3 -2l1 -7h-15.2" />
                     </svg>
                   </div>
-                  <div class="nav-text-dropdown">Make Purchase</div>
+                  <div class="nav-text-Controldrop">Make Purchase</div>
                 </div>
               </router-link>
               <router-link to="/dashboard/purchase/viewpurchase" tag="li">
-                <div class="nav-link-dropdown">
-                  <div class="nav-icon-dropdown">
+                <div class="nav-link-Controldrop">
+                  <div class="nav-icon-Controldrop">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="icon icon-tabler icon-tabler-arrows-maximize"
@@ -261,12 +261,12 @@
                       <line x1="4" y1="4" x2="10" y2="10" />
                     </svg>
                   </div>
-                  <div class="nav-text-dropdown">View Purchase</div>
+                  <div class="nav-text-Controldrop">View Purchase</div>
                 </div>
               </router-link>
               <router-link to="/dashboard/purchase/todaypurchase" tag="li">
-                <div class="nav-link-dropdown">
-                  <div class="nav-icon-dropdown">
+                <div class="nav-link-Controldrop">
+                  <div class="nav-icon-Controldrop">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="icon icon-tabler icon-tabler-clipboard"
@@ -286,7 +286,7 @@
                       <rect x="9" y="3" width="6" height="4" rx="2" />
                     </svg>
                   </div>
-                  <div class="nav-text-dropdown">Today Purchase</div>
+                  <div class="nav-text-Controldrop">Today Purchase</div>
                 </div>
               </router-link>
             </ul>
@@ -336,11 +336,11 @@
               </div>
             </div>
           </div>
-          <div class="dropdown" :class="openDrop.fold_3 ? 'dropdown-open' :' '">
+          <div class="Controldrop" :class="openDrop.fold_3 ? 'Controldrop-open' :' '">
             <ul>
-              <router-link to="#" tag="li">
-                <div class="nav-link-dropdown">
-                  <div class="nav-icon-dropdown">
+              <router-link to="/dashboard/store/product" tag="li">
+                <div class="nav-link-Controldrop">
+                  <div class="nav-icon-Controldrop">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="icon icon-tabler icon-tabler-shopping-cart"
@@ -359,12 +359,12 @@
                       <path d="M3 3h2l2 12a3 3 0 0 0 3 2h7a3 3 0 0 0 3 -2l1 -7h-15.2" />
                     </svg>
                   </div>
-                  <div class="nav-text-dropdown">Make Sale</div>
+                  <div class="nav-text-Controldrop">Product</div>
                 </div>
               </router-link>
               <router-link to="#" tag="li">
-                <div class="nav-link-dropdown">
-                  <div class="nav-icon-dropdown">
+                <div class="nav-link-Controldrop">
+                  <div class="nav-icon-Controldrop">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="icon icon-tabler icon-tabler-arrows-maximize"
@@ -388,12 +388,12 @@
                       <line x1="4" y1="4" x2="10" y2="10" />
                     </svg>
                   </div>
-                  <div class="nav-text-dropdown">View Sales</div>
+                  <div class="nav-text-Controldrop">View Sales</div>
                 </div>
               </router-link>
               <router-link to="#" tag="li">
-                <div class="nav-link-dropdown">
-                  <div class="nav-icon-dropdown">
+                <div class="nav-link-Controldrop">
+                  <div class="nav-icon-Controldrop">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="icon icon-tabler icon-tabler-clipboard"
@@ -413,7 +413,7 @@
                       <rect x="9" y="3" width="6" height="4" rx="2" />
                     </svg>
                   </div>
-                  <div class="nav-text-dropdown">Today Sale</div>
+                  <div class="nav-text-Controldrop">Today Sale</div>
                 </div>
               </router-link>
             </ul>
@@ -465,11 +465,11 @@
               </div>
             </div>
           </div>
-          <div class="dropdown" :class="openDrop.fold_4 ? 'dropdown-open' :' '">
+          <div class="Controldrop" :class="openDrop.fold_4 ? 'Controldrop-open' :' '">
             <ul>
               <router-link to="#" tag="li">
-                <div class="nav-link-dropdown">
-                  <div class="nav-icon-dropdown">
+                <div class="nav-link-Controldrop">
+                  <div class="nav-icon-Controldrop">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="icon icon-tabler icon-tabler-shopping-cart"
@@ -488,12 +488,12 @@
                       <path d="M3 3h2l2 12a3 3 0 0 0 3 2h7a3 3 0 0 0 3 -2l1 -7h-15.2" />
                     </svg>
                   </div>
-                  <div class="nav-text-dropdown">Make Sale</div>
+                  <div class="nav-text-Controldrop">Make Sale</div>
                 </div>
               </router-link>
               <router-link to="#" tag="li">
-                <div class="nav-link-dropdown">
-                  <div class="nav-icon-dropdown">
+                <div class="nav-link-Controldrop">
+                  <div class="nav-icon-Controldrop">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="icon icon-tabler icon-tabler-arrows-maximize"
@@ -517,12 +517,12 @@
                       <line x1="4" y1="4" x2="10" y2="10" />
                     </svg>
                   </div>
-                  <div class="nav-text-dropdown">View Sales</div>
+                  <div class="nav-text-Controldrop">View Sales</div>
                 </div>
               </router-link>
               <router-link to="#" tag="li">
-                <div class="nav-link-dropdown">
-                  <div class="nav-icon-dropdown">
+                <div class="nav-link-Controldrop">
+                  <div class="nav-icon-Controldrop">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="icon icon-tabler icon-tabler-clipboard"
@@ -542,7 +542,7 @@
                       <rect x="9" y="3" width="6" height="4" rx="2" />
                     </svg>
                   </div>
-                  <div class="nav-text-dropdown">Today Sale</div>
+                  <div class="nav-text-Controldrop">Today Sale</div>
                 </div>
               </router-link>
             </ul>
@@ -593,11 +593,11 @@
               </div>
             </div>
           </div>
-          <div class="dropdown" :class="openDrop.fold_5 ? 'dropdown-open' :' '">
+          <div class="Controldrop" :class="openDrop.fold_5 ? 'Controldrop-open' :' '">
             <ul>
               <router-link to="#" tag="li">
-                <div class="nav-link-dropdown">
-                  <div class="nav-icon-dropdown">
+                <div class="nav-link-Controldrop">
+                  <div class="nav-icon-Controldrop">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="icon icon-tabler icon-tabler-shopping-cart"
@@ -616,12 +616,12 @@
                       <path d="M3 3h2l2 12a3 3 0 0 0 3 2h7a3 3 0 0 0 3 -2l1 -7h-15.2" />
                     </svg>
                   </div>
-                  <div class="nav-text-dropdown">Make Sale</div>
+                  <div class="nav-text-Controldrop">Make Sale</div>
                 </div>
               </router-link>
               <router-link to="#" tag="li">
-                <div class="nav-link-dropdown">
-                  <div class="nav-icon-dropdown">
+                <div class="nav-link-Controldrop">
+                  <div class="nav-icon-Controldrop">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="icon icon-tabler icon-tabler-arrows-maximize"
@@ -645,12 +645,12 @@
                       <line x1="4" y1="4" x2="10" y2="10" />
                     </svg>
                   </div>
-                  <div class="nav-text-dropdown">View Sales</div>
+                  <div class="nav-text-Controldrop">View Sales</div>
                 </div>
               </router-link>
               <router-link to="#" tag="li">
-                <div class="nav-link-dropdown">
-                  <div class="nav-icon-dropdown">
+                <div class="nav-link-Controldrop">
+                  <div class="nav-icon-Controldrop">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="icon icon-tabler icon-tabler-clipboard"
@@ -670,7 +670,7 @@
                       <rect x="9" y="3" width="6" height="4" rx="2" />
                     </svg>
                   </div>
-                  <div class="nav-text-dropdown">Today Sale</div>
+                  <div class="nav-text-Controldrop">Today Sale</div>
                 </div>
               </router-link>
             </ul>
@@ -764,7 +764,7 @@ export default {
       openDrop: {
         fold_1: false,
         fold_2: false,
-        fold_3: false,
+        fold_3: true,
         fold_4: false,
         fold_5: false
       }
@@ -837,7 +837,7 @@ export default {
   },
 
   mounted() {
-    this.checkUser();
+    // this.checkUser();
   }
 };
 </script>

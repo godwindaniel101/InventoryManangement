@@ -206,7 +206,7 @@ export default {
     }
   },
   mounted() {
-    this.checkUser();
+    // this.checkUser();
   }
 };
 </script>

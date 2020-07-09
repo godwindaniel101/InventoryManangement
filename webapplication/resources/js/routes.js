@@ -18,6 +18,9 @@ import TodayPurchase from './components/Purchase/TodayPurchaseComponent.vue'
 import ViewPurchase from './components/Purchase/ViewPurchaseComponent.vue'
 
 
+//
+import BaseStore from './components/Store/SharedComponent/BaseStoreComponent.vue'
+import Product from './components/Store/ProductComponent.vue'
 export const routes = [
   { path: '/', component: Register },
 
@@ -46,22 +49,16 @@ export const routes = [
                     { path: 'viewpurchase', component: ViewPurchase }
                   ]
             },
+            {
+            path: 'store',
+              component: BaseStore,
+              children: [
+                    { path: '', component: Product },
+                    { path: 'product', component: Product },
+                  ]
+            },
             
 
     ]
   }
 ];
-// export const routes = [
-//   { path: '/', component: Register },
-
-//   {
-//     path: '/dashboard',
-//     component: Dashboard,
-//     children: [
-//       { path: '', component: BaseDashboard },
-//       { path: 'makesales', component: MakeSales },
-//       { path: 'todaysales', component: TodaySales },
-//       { path: 'viewsales', component: ViewSales }
-//     ]
-//   }
-// ];
