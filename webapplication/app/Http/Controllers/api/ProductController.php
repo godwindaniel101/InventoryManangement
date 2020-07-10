@@ -5,9 +5,12 @@ namespace App\Http\Controllers\api;
 use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\Traits\GeneralScopes;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 class ProductController extends Controller
-{
+{       use GeneralScopes;
+
     /**
      * Display a listing of the resource.
      *
@@ -35,17 +38,19 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
-        $this->validate($request , [
+    {  
+        
+        
+        $this->getAuthenticatedUser();
+    
+       $validator = $this->validate($request , [
             'product_name' => 'required',
             'product_cost' => 'required',
-            'product_count' => 'required',
             'product_supplier' => 'required',
-            'product_max' => 'required',
             'product_price' => 'required',
-            'product_warn' => 'required',
         ]);
-        Product::create($request->all());
+        $validator['user_id'] = Auth::user()->id;
+        Product::create($validator);
         return ['success' => 'true'];
     }
 
@@ -83,10 +88,7 @@ class ProductController extends Controller
         $this->validate($request, [
             'product_name' => 'required',
             'product_cost' => 'required',
-            'product_count' => 'required',
             'product_supplier' => 'required',
-            'product_max' => 'required',
-            'product_warn' => 'required',
         ]);
 
         Product::where('id' , $id)->update($request->all());
@@ -105,7 +107,6 @@ class ProductController extends Controller
         return ['success'=>'true'];
     }
     public function getCost($id){
-        // return 'yes';
         return Product::where('id' , $id)->first();
     }
 }

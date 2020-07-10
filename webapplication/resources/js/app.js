@@ -19,6 +19,7 @@ import Swal from 'sweetalert2'
 import VueChatScroll from 'vue-chat-scroll'
 import { Vuetable, VuetablePagination } from 'vuetable-2'
 import Select2 from 'v-select2-component';
+import {store} from './store'
 // import Gate from './Gate';
 import vSelect from 'vue-select'
 import 'vue-select/dist/vue-select.css';
@@ -41,13 +42,13 @@ Vue.use(VueChatScroll)
 //
 let Trigger = new Vue;
 const options = {
-  color: '#bffaf3',
+  color: 'yellow',
   failedColor: 'red',
   thickness: '5px',
   transition: {
     speed: '0.2s',
     opacity: '0.6s',
-    termination: 300
+    termination: 150
   },
   autoRevert: true,
   location: 'left',
@@ -99,5 +100,6 @@ export const dataCheck = new Vue();
 // Vue.use(Form);
 const app = new Vue({
   el: '#app',
-  router
+  router,
+  store:store,
 });

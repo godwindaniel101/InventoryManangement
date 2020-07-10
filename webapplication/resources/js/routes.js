@@ -21,6 +21,8 @@ import ViewPurchase from './components/Purchase/ViewPurchaseComponent.vue'
 //
 import BaseStore from './components/Store/SharedComponent/BaseStoreComponent.vue'
 import Product from './components/Store/ProductComponent.vue'
+import ProductStock from './components/Store/ProductStockComponent.vue'
+import Branch from './components/Store/BranchComponent.vue'
 export const routes = [
   { path: '/', component: Register },
 
@@ -55,6 +57,8 @@ export const routes = [
               children: [
                     { path: '', component: Product },
                     { path: 'product', component: Product },
+                    { path: 'product_stock', component: ProductStock },
+                    { path: 'branch', component: Branch },
                   ]
             },
             

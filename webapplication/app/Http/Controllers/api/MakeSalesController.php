@@ -97,14 +97,14 @@ class MakeSalesController extends Controller
         }
         Transaction::create([
             'transaction_id' => $salesData['transactionId'],
-            'branch' => 'Default Branch',
+            'branch_id' => 'Default Branch',
             'total' => $salesData['netTotal'],
             'transaction_type' => 'sales',
             'gross'=> $gross]);
     
         SalesRecord::create([
                 'transaction_id' =>  $salesData['transactionId'],
-                'branch' => 'Default Branch',
+                'branch_id' => 'Default Branch',
                 'net_total' =>  $salesData['netTotal'],
                 'total_quantity' => $salesData['netQuantity'], 
                 'status' => 1,

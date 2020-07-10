@@ -94,7 +94,7 @@
                             <span>Restore</span>
                           </a>
                         </div>
-                        <div class="dropdown-menu" @click=" deleteSales( sales_record.transaction_id, sales_record.status)">
+                        <div class="dropdown-item" @click=" deleteSales( sales_record.transaction_id, sales_record.status)">
                         <a href="javascript:;" >
                           <i class="fas fa-trash text-red"></i>
                           <span>Delete</span>
@@ -115,7 +115,9 @@
         </div>
 
     <div v-show="editMode">
-      <app-sales-form></app-sales-form>
+        <!-- <transition-group name="slide" mode="out-in"> -->
+                <app-sales-form></app-sales-form>
+       <!-- </transition-group> -->
     </div>
     <div
       class="modal fade"
@@ -433,5 +435,51 @@ export default {
   font-size: 5px;
   transform-origin: 50% 50%;
   transform: rotate(20deg) scale(4);
+}
+table th {
+    text-align: left;
+}
+.salesError {
+    border: 1px solid red;
+    background: red;
+    color: white;
+}
+.slide-enter {
+    opacity: 0;
+}
+.slide-enter-active {
+    animation: slide-in 1s ease-out forwards;
+    transition: opacity 0.5s;
+    position: absolute;
+}
+.slide-leave {
+}
+.slide-leave-active {
+    animation: slide-in 1s ease-out forwards;
+    transition: opacity 1s;
+}
+.slide-move {
+    transition: transform 1s;
+}
+.salescontainer {
+    transition: height 500ms;
+    position: relative;
+    width: 100%;
+}
+@keyframes slide-in {
+    from {
+        transform: translateY(10px);
+    }
+    to {
+        transform: translateY(0px);
+    }
+}
+@keyframes slide-out {
+    from {
+        transform: translateY(0px);
+    }
+    to {
+        transform: translateY(1px);
+    }
 }
 </style>

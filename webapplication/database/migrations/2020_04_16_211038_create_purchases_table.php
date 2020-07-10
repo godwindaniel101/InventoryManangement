@@ -15,6 +15,8 @@ class CreatePurchasesTable extends Migration
     {
         Schema::create('purchases', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->nullable();
+            $table->string('branch_id')->nullable();
             $table->string('transaction_id')->nullable();
             $table->string('product_quantity')->nullable();
             $table->string('product_cost')->nullable();

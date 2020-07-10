@@ -67,3 +67,26 @@ Route:: get('findUser', 'API\UsersController@findUser');
 Route::resource('chatcontrol', 'API\ChatsController');
 Route::post('getMessage' , 'API\ChatsController@getMessage');
 Route::post('getDetail' , 'API\ChatsController@getDetail');
+
+
+
+Route::group([
+        'prefix' => 'branch'
+], function(){
+    Route::post('createBranch' , 'api\BranchController@createBranch');
+    Route::put('updateBranch/{id}' , 'api\BranchController@updateBranch');
+    Route::get('getBranch' , 'api\BranchController@getBranch');
+    Route::get('getBranch/{id}' , 'api\BranchController@getEditBranch');
+    Route::delete('deleteBranch/{id}' , 'api\BranchController@deleteBranch');
+});
+
+Route::group([
+    'prefix' => 'product_stock'
+], function(){
+Route::post('checkProductStock' , 'api\ProductStockController@checkProductStock');
+Route::post('createProductStock' , 'api\ProductStockController@createProductStock');
+Route::get('getProductStock' , 'api\ProductStockController@getProductStock');
+Route::get('getEditProductStock/{id}' , 'api\ProductStockController@getEditProductStock');
+Route::put('updateProductStock/{id}' , 'api\ProductStockController@updateProductStock');
+Route::delete('deleteProductStock/{id}' , 'api\ProductStockController@deleteProductStock');
+});

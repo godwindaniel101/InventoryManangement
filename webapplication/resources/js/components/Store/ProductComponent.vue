@@ -1,6 +1,7 @@
 <template>
   <div class="contentWrapper">
     <div class="card-container">
+      <!-- <button @click="clickca()">Update</button> -->
       <div class="card-container-head">
         <h3 class="card-container-head-text">Products</h3>
 
@@ -40,9 +41,9 @@
             <th>Cost</th>
             <th>Price</th>
             <th>Supplier</th>
-            <th>Maximum Qty</th>
+            <!-- <th>Maximum Qty</th>
             <th>Warning Qty</th>
-            <th>Current Qty</th>
+            <th>Current Qty</th> -->
             <th>Created</th>
             <th>Action</th>
           </tr>
@@ -54,15 +55,12 @@
             <td>{{product.product_cost}}</td>
             <td>{{product.product_price}}</td>
             <td>{{product.product_supplier}}</td>
-            <td>{{product.product_max}}</td>
+            <!-- <td>{{product.product_max}}</td>
             <td>{{product.product_warn}}</td>
-            <td>{{product.product_count}}</td>
+            <td>{{product.product_count}}</td> -->
             <td>{{product.created_at | dateChange}}</td>
             <td>
               <div class="action-wrapper">
-                <a class="action-add" href="javascript:;" @click="issue(product.id)">
-                  <i class="fas fa-plus"></i>
-                </a>
                 <a class="action-edit" href="javascript:;" @click="edit(product.id)">
                   <i class="fas fa-edit"></i>
                 </a>
@@ -74,6 +72,14 @@
           </tr>
         </tbody>
       </table>
+       <div v-show="!recordExist" class="noRecordcontianer">
+                <div class="noRecordImage">
+                    <img src="/image/preloader.gif" />
+                </div>
+                <div class="noRecordText">
+                    <p v-text="recordContent"></p>
+                </div>
+            </div>
     </div>
     <div class="modal" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
@@ -140,7 +146,7 @@
                     <has-error :form="form" field="product_supplier"></has-error>
                   </div>
                 </div>
-                <div class="col-md-12">
+                <!-- <div class="col-md-12">
                   <div class="form-group">
                     <input
                       v-model="form.product_warn"
@@ -179,7 +185,7 @@
                     />
                     <has-error :form="form" field="product_count"></has-error>
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
             <div class="modal-footer">
@@ -214,26 +220,56 @@ export default {
         product_name: "",
         product_cost: "",
         product_price: "",
-        product_count: "",
+        // product_count: "",
         product_supplier: "",
-        product_max: "",
-        product_warn: ""
+        // product_max: "",
+        // product_warn: ""
       }),
+      token:'',
       products: {},
-      editMode: false
+      editMode: false,
+      recordExist:false,
+      recordContent:"...Loading Data"
     };
   },
   methods: {
+    clickca(){
+      this.$store.state.counter++
+    },
     getproduct() {
-      axios.get("/api/product").then(({ data }) => {
-        this.products = data;
+       this.$Progress.start();
+      this.form.submit("get","/api/product", {
+                    headers: {
+                        authorization: "Bearer " + this.token
+                    }
+         }).then(({ data }) => {
+            if (data.length > 0) {
+                            this.recordContent = "";
+                            this.recordExist = true;
+                           this.products = data;
+                            this.$Progress.finish();
+                        } else {
+                            this.recordContent = "No Record Found";
+                            this.recordExist = false;
+                             this.$Progress.fail();
+                        }
+        
         // console.log(data);
+      }).catch(()=>{
+         this.$Progress.fail();
+                    this.recordContent =
+                        ". . .Error Getting Record, Login again and try...";
+                    this.recordExist = false;
       });
     },
     create() {
       this.$Progress.start();
       this.form
-        .post("/api/product")
+        .submit('post',"/api/product" , {
+                    headers: {
+                        authorization: "Bearer " + this.token
+                    }
+         })
         .then(({ data }) => {
           this.$Progress.finish();
           Toast.fire({
@@ -304,11 +340,15 @@ export default {
       this.form.reset();
       this.editMode = false;
       $(".modal").modal("hide");
-    }
+    },
+     getToken() {
+            this.token = localStorage.getItem("access_token");
+        }
   },
   mounted() {
     console.log(this.editMode);
     this.getproduct();
+    this.getToken();
   }
 };
 </script>

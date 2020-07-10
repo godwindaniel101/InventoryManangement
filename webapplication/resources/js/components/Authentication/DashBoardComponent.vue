@@ -362,7 +362,7 @@
                   <div class="nav-text-Controldrop">Product</div>
                 </div>
               </router-link>
-              <router-link to="#" tag="li">
+              <router-link to="/dashboard/store/product_stock" tag="li">
                 <div class="nav-link-Controldrop">
                   <div class="nav-icon-Controldrop">
                     <svg
@@ -388,10 +388,10 @@
                       <line x1="4" y1="4" x2="10" y2="10" />
                     </svg>
                   </div>
-                  <div class="nav-text-Controldrop">View Sales</div>
+                  <div class="nav-text-Controldrop">Product Stock</div>
                 </div>
               </router-link>
-              <router-link to="#" tag="li">
+              <router-link to="/dashboard/store/branch" tag="li">
                 <div class="nav-link-Controldrop">
                   <div class="nav-icon-Controldrop">
                     <svg
@@ -413,7 +413,7 @@
                       <rect x="9" y="3" width="6" height="4" rx="2" />
                     </svg>
                   </div>
-                  <div class="nav-text-Controldrop">Today Sale</div>
+                  <div class="nav-text-Controldrop">Branch</div>
                 </div>
               </router-link>
             </ul>
