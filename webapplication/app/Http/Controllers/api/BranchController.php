@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Branch;
+use App\UserSetting;
 use PHPUnit\Exception;
 use Illuminate\Http\Request;
 use App\Traits\GeneralScopes;
@@ -25,11 +26,7 @@ class BranchController extends Controller
     ]);
     
     try{
-    $this->getAuthenticatedUser();
-        //get Authenticated user detail
-        Auth::user()->id;
-
-        $branch_record['user_id']=Auth::user()->id;
+        $branch_record['user_id']=$this->getAuthenticatedUser()->id;
 // return $branch_record;
         Branch::create($branch_record);
 
@@ -45,17 +42,17 @@ class BranchController extends Controller
     
     }
     public function getBranch(){
-        try{
-            $this->getAuthenticatedUser();
+        // try{
+            
                 //get Authenticated user detail
-              return $data = Branch::where('user_id' ,  Auth::user()->id)->get();
-                $response['status'] = true ;
-                $response['data'] = $data;
-                return $response;
-            }catch(Exception $e)
-                {
-                 throw ValidationException::withMessages(['invalid_token' => $e->getMessage()]);
-                 }
+              return $data = Branch::where('user_id' , $this->getAuthenticatedUser()->id)->paginate(1);
+            //     $response['status'] = true ;
+            //     $response['data'] = $data;
+            //     return $response;
+            // }catch(Exception $e)
+            //     {
+            //      throw ValidationException::withMessages(['invalid_token' => $e->getMessage()]);
+            //      }
             
         
     }
@@ -109,4 +106,38 @@ class BranchController extends Controller
     }
     return $response;
 }
+    public function getUserCurrentBranch(){
+        ;
+        $user_id = $this->getAuthenticatedUser()->id;
+
+        $user_default = UserSetting::where('user_id' , $user_id)->first();
+        // return $user_default;
+        if($user_default){
+        $user_record['branch_id'] = $user_default->branch ? $user_default->branch->id : 0;
+        $user_record['branch_name'] = $user_default->branch ? $user_default->branch->name : 'Select Branch';
+       
+        }else{
+        $user_record['branch_id'] = 'Select';
+        $user_record['branch_name'] = 'Select';
+        }
+        return $user_record;
+       
+    }
+    public function updateDefaultBranch($id){
+     
+        $user_id = $this->getAuthenticatedUser()->id;
+        $user = UserSetting::where('user_id' , $user_id);
+        $user_default = $user->first();
+        // return $user_default;
+        if($user_default === null ){
+            return UserSetting::create([
+                'user_id' => $user_id,
+                'branch_id' =>$id,
+            ]);
+        }else{
+            return  $user->update([
+                'branch_id' => $id
+            ]);
+        }
+    }
 }

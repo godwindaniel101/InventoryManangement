@@ -62,12 +62,14 @@ Route::put('profile', 'API\UsersController@updateProfile');
 Route::post('uploadPhoto','API\UsersController@uploadPhoto');
 Route::post('changePassword', 'API\UsersController@changePassword');
 Route:: post('passwordCheck', 'API\UsersController@passwordCheck');
-Route:: get('getCost/{id}', 'API\ProductController@getCost');
+
+Route:: get('getCost/{product_id}/branch/{branch_id}', 'API\ProductController@getCost');
+
 Route:: get('findUser', 'API\UsersController@findUser');
 Route::resource('chatcontrol', 'API\ChatsController');
 Route::post('getMessage' , 'API\ChatsController@getMessage');
 Route::post('getDetail' , 'API\ChatsController@getDetail');
-
+Route::get('getBranchProduct/{id}' , 'API\ProductController@getBranchProduct');
 
 
 Route::group([
@@ -78,6 +80,8 @@ Route::group([
     Route::get('getBranch' , 'api\BranchController@getBranch');
     Route::get('getBranch/{id}' , 'api\BranchController@getEditBranch');
     Route::delete('deleteBranch/{id}' , 'api\BranchController@deleteBranch');
+    Route::post('updateDefaultBranch/{id}' , 'api\BranchController@updateDefaultBranch');
+    Route::get('getUserCurrentBranch' , 'api\BranchController@getUserCurrentBranch');
 });
 
 Route::group([
@@ -90,3 +94,5 @@ Route::get('getEditProductStock/{id}' , 'api\ProductStockController@getEditProdu
 Route::put('updateProductStock/{id}' , 'api\ProductStockController@updateProductStock');
 Route::delete('deleteProductStock/{id}' , 'api\ProductStockController@deleteProductStock');
 });
+
+

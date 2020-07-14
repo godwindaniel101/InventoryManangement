@@ -1,38 +1,35 @@
 <template>
     <div class="contentWrapper">
         <div class="card-container">
-            <!-- <button @click="clickca()">Update</button> -->
             <div class="card-container-head">
                 <h3 class="card-container-head-text">Product Stock</h3>
 
-                <div class="card-toolsx">
+                 <div class="card-toolsx">
                     <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="icon icon-tabler icon-tabler-apps"
                         data-toggle="modal"
                         data-target=".modal"
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="icon icon-tabler icon-tabler-arrows-maximize"
-                        width="25"
-                        height="25"
+                        width="35"
+                        height="35"
                         viewBox="0 0 24 24"
                         stroke-width="1"
-                        stroke="black"
+                        stroke="#fff"
                         fill="none"
                         stroke-linecap="round"
                         stroke-linejoin="round"
                     >
                         <path stroke="none" d="M0 0h24v24H0z" />
-                        <polyline points="16 4 20 4 20 8" />
-                        <line x1="14" y1="10" x2="20" y2="4" />
-                        <polyline points="8 20 4 20 4 16" />
-                        <line x1="4" y1="20" x2="10" y2="14" />
-                        <polyline points="16 20 20 20 20 16" />
-                        <line x1="14" y1="14" x2="20" y2="20" />
-                        <polyline points="8 4 4 4 4 8" />
-                        <line x1="4" y1="4" x2="10" y2="10" />
+                        <rect x="4" y="4" width="6" height="6" rx="1" />
+                        <rect x="4" y="14" width="6" height="6" rx="1" />
+                        <rect x="14" y="14" width="6" height="6" rx="1" />
+                        <line x1="14" y1="7" x2="20" y2="7" />
+                        <line x1="17" y1="4" x2="17" y2="10" />
                     </svg>
                 </div>
             </div>
-
+            <div class="card-body">
+                <div class="fixedCardHeight-table">
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -46,14 +43,14 @@
                         <th>Action</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody v-show="recordExist">
                     <tr
-                        v-for="(product, index) in productStock"
-                        :key="productStock.id"
+                        v-for="(product, index) in productStock.data"
+                        :key="productStock.data.id"
                     >
                         <td>{{ index + 1 }}</td>
-                        <td>{{ product.branch_name | textTransform }}</td>
-                        <td>{{ product.product_name | textTransform }}</td>
+                        <td>{{ product.branch.name | textTransform }}</td>
+                        <td>{{ product.product.product_name | textTransform }}</td>
                         <td>{{ product.product_max }}</td>
                         <td>{{ product.product_warn }}</td>
                         <td>
@@ -85,7 +82,7 @@
                     </tr>
                 </tbody>
             </table>
-            <div v-show="!recordExist" class="noRecordcontianer">
+             <div v-show="!recordExist" class="noRecordcontianer">
                 <div class="noRecordImage">
                     <img src="/image/preloader.gif" />
                 </div>
@@ -93,6 +90,12 @@
                     <p v-text="recordContent"></p>
                 </div>
             </div>
+            </div>
+              <div class="paginated">
+                <pagination :data="productStock" @pagination-change-page="getResults"></pagination>
+            </div>
+            </div>
+           
             <!-- <button @click="getProductStock()">My Click</button> -->
         </div>
         <div class="modal" tabindex="-1" role="dialog">
@@ -124,6 +127,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
+                                        <label>Branch</label>
                                         <v-select
                                             class="form-control-drop"
                                             label="name"
@@ -147,6 +151,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
+                                        <label>Product</label>
                                         <v-select
                                             class="form-control-drop"
                                             label="product_name"
@@ -310,7 +315,11 @@ export default {
         },
         getProduct() {
             axios
-                .get("/api/product")
+                .get("/api/product",{
+                    headers: {
+                        authorization: "Bearer " + this.token
+                    }
+                })
                 .then(({ data }) => {
                     console.log(data);
                     this.products = data;
@@ -364,6 +373,27 @@ export default {
                     this.$Progress.fail();
                 });
         },
+         getResults(page = 1) {
+      this.recordExist = false;
+      // this.$Progress.start();
+      axios
+        .get("/api/product_stock/getProductStock?page=" + page, {
+          headers: {
+            authorization: "Bearer " + this.token
+          }
+        })
+        .then(response => {
+          this.productStock = response.data;
+
+          this.recordExist = true;
+          // this.$Progress.finish();
+        })
+        .catch(() => {
+          this.recordExist = false;
+          this.recordContent =
+            ". . .Error Getting Record, Login again and try...";
+        });
+    },
         getProductStock() {
             this.form
                 .submit("get", "/api/product_stock/getProductStock", {
@@ -371,18 +401,21 @@ export default {
                         authorization: "Bearer " + this.token
                     }
                 })
-                .then(response => {
-                    console.log(response);
-                    if (response.status) {
-                        if (response.data.data.length > 0) {
-                            this.recordContent = "";
-                            this.recordExist = true;
-                            this.productStock = response.data.data;
-                        } else {
-                            this.recordContent = "No Record Found";
-                            this.recordExist = false;
-                        }
-                    }
+                .then(({data}) => {
+                    console.log(data);
+                     this.productStock = data;
+                      this.recordExist = true;
+
+
+                    // if (data.length > 0) {
+                    //         this.recordContent = "";
+                    //         this.recordExist = true;
+                    //         this.productStock = data;
+                    //     } else {
+                    //         this.recordContent = "No Record Found";
+                    //         this.recordExist = false;
+                    //     }
+                    
                 })
                 .catch(() => {
                     this.$Progress.fail();

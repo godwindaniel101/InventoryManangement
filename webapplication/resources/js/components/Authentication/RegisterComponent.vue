@@ -63,7 +63,7 @@
               <has-error :form="form" field="confirm_password"></has-error>
             </div>
             <div class="form-group-link">
-              <div class="btn" @click="registerUser()">Register</div>
+              <div class="btn-dash-base" @click="registerUser()">Register</div>
             </div>
             <div class="notice">
                 <p>Already have an account ? <span @click="loginMode = true">Login</span></p>
@@ -101,7 +101,7 @@
                      <p>Remember me </p>
             </div>
             <div class="form-group-link">
-              <div class="btn" @click="loginUser()">Login</div>
+              <div class="btn-dash-base" @click="loginUser()">Login</div>
             </div>
               
             <div class="notice">

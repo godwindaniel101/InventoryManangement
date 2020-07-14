@@ -86,6 +86,9 @@ Vue.filter('Capitalize', function(value){
 Vue.filter('dateChange', function(value){
   return moment(value).format('MMMM Do YYYY');
 });
+Vue.filter('timeChange', function(value){
+  return moment(value).format('hh mm ss a');
+});
 Vue.use(VueRouter);
 const router = new VueRouter({
   routes, // short for `routes: routes`

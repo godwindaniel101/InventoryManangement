@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\api;
 
 use App\Product;
+use App\ProductStock;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Traits\GeneralScopes;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+
 class ProductController extends Controller
 {       use GeneralScopes;
 
@@ -18,7 +20,23 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return Product::all();
+        $id = $this->getAuthenticatedUser()->id;
+        return Product::where('user_id', $id)->paginate(1);
+    }
+    public function getBranchProduct($id)
+    {
+        $autId = $this->getAuthenticatedUser()->id;
+        $data = ProductStock::where('user_id', $autId)->where('branch_id' , $id)->get();
+        // return $data;
+        // $data = ProductStock::where('user_id', $autId)->where('branch_id' , $id)->where('product_count', '>' , 0)->get();
+        $dataArray = [];
+        foreach($data as $unitdata){
+            $formatted_data['id'] = $unitdata->id;
+            $formatted_data['product_id'] = $unitdata->product_id;
+            $formatted_data['product_name'] = $unitdata->product ? $unitdata->product->product_name : 'Old Product';
+            array_push($dataArray , $formatted_data);
+        }
+        return $dataArray;
     }
 
     /**
@@ -41,7 +59,7 @@ class ProductController extends Controller
     {  
         
         
-        $this->getAuthenticatedUser();
+        ;
     
        $validator = $this->validate($request , [
             'product_name' => 'required',
@@ -49,7 +67,7 @@ class ProductController extends Controller
             'product_supplier' => 'required',
             'product_price' => 'required',
         ]);
-        $validator['user_id'] = Auth::user()->id;
+        $validator['user_id'] = $this->getAuthenticatedUser()->id;
         Product::create($validator);
         return ['success' => 'true'];
     }
@@ -106,7 +124,11 @@ class ProductController extends Controller
         Product::where('id' , $id)->delete();
         return ['success'=>'true'];
     }
-    public function getCost($id){
-        return Product::where('id' , $id)->first();
+    public function getCost($product_id ,$branch_id){
+       $formatted_data = ProductStock::where('branch_id' , $branch_id)->where('product_id' , $product_id)->first();
+    //    return $formatted_datas;
+       $formatted_data['product_cost'] = $formatted_data->product->product_cost ? $formatted_data->product->product_cost: '';
+       return $formatted_data;
     }
+    
 }

@@ -4,7 +4,8 @@
       <div class="nav-detail">
         <div class="nav-logo"></div>
         <div class="nav-name">
-          <p>{{!fold ? 'Vance Inventry' : 'VI'}}</p>
+          <p v-if="fold">V<span>I</span></p>
+          <p v-else>Vance<span>Inventry</span></p>
         </div>
       </div>
       <ul>
@@ -14,8 +15,8 @@
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="icon icon-tabler icon-tabler-home"
-                width="30"
-                height="30"
+                width="20"
+                height="20"
                 viewBox="0 0 24 24"
                 stroke-width="2"
                 stroke="#fff"
@@ -40,8 +41,8 @@
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="icon icon-tabler icon-tabler-sort-ascending"
-                width="30"
-                height="30"
+                width="20"
+                height="20"
                 viewBox="0 0 24 24"
                 stroke-width="2"
                 stroke="#fff"
@@ -65,8 +66,8 @@
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="icon icon-tabler icon-tabler-chevron-left"
-                  width="30"
-                  height="30"
+                  width="20"
+                  height="20"
                   viewBox="0 0 24 24"
                   stroke-width="2"
                   stroke="#fff"
@@ -88,8 +89,8 @@
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="icon icon-tabler icon-tabler-shopping-cart"
-                      width="25"
-                      height="25"
+                      width="18"
+                      height="18"
                       viewBox="0 0 24 24"
                       stroke-width="2"
                       stroke="#fff"
@@ -112,8 +113,8 @@
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="icon icon-tabler icon-tabler-arrows-maximize"
-                      width="25"
-                      height="25"
+                      width="18"
+                      height="18"
                       viewBox="0 0 24 24"
                       stroke-width="1"
                       stroke="#fff"
@@ -141,8 +142,8 @@
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="icon icon-tabler icon-tabler-clipboard"
-                      width="25"
-                      height="25"
+                      width="18"
+                      height="18"
                       viewBox="0 0 24 24"
                       stroke-width="2"
                       stroke="#fff"
@@ -169,8 +170,8 @@
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="icon icon-tabler icon-tabler-sort-descending"
-                width="30"
-                height="30"
+                width="20"
+                height="20"
                 viewBox="0 0 24 24"
                 stroke-width="2"
                 stroke="#fff"
@@ -194,8 +195,8 @@
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="icon icon-tabler icon-tabler-chevron-left"
-                  width="30"
-                  height="30"
+                  width="20"
+                  height="20"
                   viewBox="0 0 24 24"
                   stroke-width="2"
                   stroke="#fff"
@@ -217,8 +218,8 @@
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="icon icon-tabler icon-tabler-shopping-cart"
-                      width="25"
-                      height="25"
+                      width="18"
+                      height="18"
                       viewBox="0 0 24 24"
                       stroke-width="2"
                       stroke="#fff"
@@ -241,8 +242,8 @@
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="icon icon-tabler icon-tabler-arrows-maximize"
-                      width="25"
-                      height="25"
+                      width="18"
+                      height="18"
                       viewBox="0 0 24 24"
                       stroke-width="1"
                       stroke="#fff"
@@ -270,8 +271,8 @@
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="icon icon-tabler icon-tabler-clipboard"
-                      width="25"
-                      height="25"
+                      width="18"
+                      height="18"
                       viewBox="0 0 24 24"
                       stroke-width="2"
                       stroke="#fff"
@@ -298,8 +299,8 @@
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="icon icon-tabler icon-tabler-stack"
-                width="30"
-                height="30"
+                width="20"
+                height="20"
                 viewBox="0 0 24 24"
                 stroke-width="2"
                 stroke="#fff"
@@ -321,8 +322,8 @@
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="icon icon-tabler icon-tabler-chevron-left"
-                  width="30"
-                  height="30"
+                  width="20"
+                  height="20"
                   viewBox="0 0 24 24"
                   stroke-width="2"
                   stroke="#fff"
@@ -344,8 +345,8 @@
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="icon icon-tabler icon-tabler-shopping-cart"
-                      width="25"
-                      height="25"
+                      width="18"
+                      height="18"
                       viewBox="0 0 24 24"
                       stroke-width="2"
                       stroke="#fff"
@@ -368,8 +369,8 @@
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="icon icon-tabler icon-tabler-arrows-maximize"
-                      width="25"
-                      height="25"
+                      width="18"
+                      height="18"
                       viewBox="0 0 24 24"
                       stroke-width="1"
                       stroke="#fff"
@@ -397,8 +398,8 @@
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="icon icon-tabler icon-tabler-clipboard"
-                      width="25"
-                      height="25"
+                      width="18"
+                      height="18"
                       viewBox="0 0 24 24"
                       stroke-width="2"
                       stroke="#fff"
@@ -425,8 +426,8 @@
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="icon icon-tabler icon-tabler-clipboard-check"
-                width="30"
-                height="30"
+                width="20"
+                height="20"
                 viewBox="0 0 24 24"
                 stroke-width="2"
                 stroke="#fff"
@@ -450,8 +451,8 @@
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="icon icon-tabler icon-tabler-chevron-left"
-                  width="30"
-                  height="30"
+                  width="20"
+                  height="20"
                   viewBox="0 0 24 24"
                   stroke-width="2"
                   stroke="#fff"
@@ -473,8 +474,8 @@
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="icon icon-tabler icon-tabler-shopping-cart"
-                      width="25"
-                      height="25"
+                      width="18"
+                      height="18"
                       viewBox="0 0 24 24"
                       stroke-width="2"
                       stroke="#fff"
@@ -497,8 +498,8 @@
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="icon icon-tabler icon-tabler-arrows-maximize"
-                      width="25"
-                      height="25"
+                      width="18"
+                      height="18"
                       viewBox="0 0 24 24"
                       stroke-width="1"
                       stroke="#fff"
@@ -526,8 +527,8 @@
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="icon icon-tabler icon-tabler-clipboard"
-                      width="25"
-                      height="25"
+                      width="18"
+                      height="18"
                       viewBox="0 0 24 24"
                       stroke-width="2"
                       stroke="#fff"
@@ -554,8 +555,8 @@
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="icon icon-tabler icon-tabler-settings"
-                width="30"
-                height="30"
+                width="20"
+                height="20"
                 viewBox="0 0 24 24"
                 stroke-width="2"
                 stroke="#fff"
@@ -578,8 +579,8 @@
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="icon icon-tabler icon-tabler-chevron-left"
-                  width="30"
-                  height="30"
+                  width="20"
+                  height="20"
                   viewBox="0 0 24 24"
                   stroke-width="2"
                   stroke="#fff"
@@ -595,14 +596,14 @@
           </div>
           <div class="Controldrop" :class="openDrop.fold_5 ? 'Controldrop-open' :' '">
             <ul>
-              <router-link to="#" tag="li">
+              <router-link to="/dashboard/settings/default_settings" tag="li">
                 <div class="nav-link-Controldrop">
                   <div class="nav-icon-Controldrop">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="icon icon-tabler icon-tabler-shopping-cart"
-                      width="25"
-                      height="25"
+                      width="18"
+                      height="18"
                       viewBox="0 0 24 24"
                       stroke-width="2"
                       stroke="#fff"
@@ -616,17 +617,17 @@
                       <path d="M3 3h2l2 12a3 3 0 0 0 3 2h7a3 3 0 0 0 3 -2l1 -7h-15.2" />
                     </svg>
                   </div>
-                  <div class="nav-text-Controldrop">Make Sale</div>
+                  <div class="nav-text-Controldrop">Default Settings</div>
                 </div>
               </router-link>
-              <router-link to="#" tag="li">
+              <router-link to="/dashboard/settings/default_settings" tag="li">
                 <div class="nav-link-Controldrop">
                   <div class="nav-icon-Controldrop">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="icon icon-tabler icon-tabler-arrows-maximize"
-                      width="25"
-                      height="25"
+                      width="18"
+                      height="18"
                       viewBox="0 0 24 24"
                       stroke-width="1"
                       stroke="#fff"
@@ -654,8 +655,8 @@
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="icon icon-tabler icon-tabler-clipboard"
-                      width="25"
-                      height="25"
+                      width="18"
+                      height="18"
                       viewBox="0 0 24 24"
                       stroke-width="2"
                       stroke="#fff"
@@ -682,8 +683,8 @@
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="icon icon-tabler icon-tabler-power"
-                width="30"
-                height="30"
+                width="20"
+                height="20"
                 viewBox="0 0 24 24"
                 stroke-width="2"
                 stroke="#fff"
@@ -707,31 +708,19 @@
       <div class="page-content">
         <div class="page-header">
           <div class="page-header-control" @click="getfolded()">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="icon icon-tabler icon-tabler-menu"
-              width="44"
-              height="44"
-              viewBox="0 0 24 24"
-              stroke-width="1"
-              stroke="#2c3e50"
-              fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path stroke="none" d="M0 0h24v24H0z" />
-              <line x1="4" y1="3" x2="20" y2="3" />
-              <line x1="4" y1="6" x2="20" y2="6" />
-              <line x1="4" y1="9" x2="20" y2="9" />
-              <line x1="4" y1="12" x2="20" y2="12" />
-            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-align-justified" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#3F51B5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="4" y1="6" x2="20" y2="6" />
+  <line x1="4" y1="12" x2="20" y2="12" />
+  <line x1="4" y1="18" x2="20" y2="18" />
+</svg>
           </div>
           <div class="page-header-control" @click="logoutUser()">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="icon icon-tabler icon-tabler-power"
-              width="30"
-              height="30"
+              width="20"
+              height="20"
               viewBox="0 0 24 24"
               stroke-width="1"
               stroke="#3F51B5"

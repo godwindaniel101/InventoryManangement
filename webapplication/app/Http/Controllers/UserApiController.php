@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use JWTAuth;
 use App\User;
+use App\UserSetting;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 
 class UserApiController extends Controller
@@ -47,6 +48,13 @@ class UserApiController extends Controller
                 'name' => $request->get('username'),
                 'email' => $request->get('email'),
                 'password' => Hash::make($request->get('password')),
+            ]);
+                UserSetting::create([
+                        'user_id' => $user->id,
+                        'branch_id' => 0,
+                        'profile_pic' => 'profile.png',
+                        'user_color'=>'white',
+                        'user_setting_status' => 'update'
             ]);
 
             $token = JWTAuth::fromUser($user);

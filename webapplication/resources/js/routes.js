@@ -23,6 +23,13 @@ import BaseStore from './components/Store/SharedComponent/BaseStoreComponent.vue
 import Product from './components/Store/ProductComponent.vue'
 import ProductStock from './components/Store/ProductStockComponent.vue'
 import Branch from './components/Store/BranchComponent.vue'
+
+
+
+
+//settings
+import BaseSettings from './components/Settings/SharedComponent/BaseSettingsComponent.vue'
+import DefaultSettings from './components/Settings/DefaultSettingsComponent.vue'
 export const routes = [
   { path: '/', component: Register },
 
@@ -61,6 +68,14 @@ export const routes = [
                     { path: 'branch', component: Branch },
                   ]
             },
+           {
+            path: 'settings',
+            component: BaseSettings,
+            children:[
+              {path : '' , component : DefaultSettings},
+              {path : 'default_settings' , component : DefaultSettings}
+            ]
+           }
             
 
     ]

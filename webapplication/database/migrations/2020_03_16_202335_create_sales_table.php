@@ -19,8 +19,10 @@ class CreateSalesTable extends Migration
             $table->string('branch_id')->nullable();
             $table->string('transaction_id')->nullable();
             $table->string('product_quantity')->nullable();
+            $table->string('product_cost')->nullable();
             $table->string('product_price')->nullable();
             $table->string('product_id')->nullable();
+            $table->string('product_stock_id')->nullable();
             $table->string('product_name')->nullable();
             $table->string('product_discount')->nullable();
             $table->string('product_unitTotal')->nullable();

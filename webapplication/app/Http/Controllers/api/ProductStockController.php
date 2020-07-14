@@ -45,8 +45,8 @@ class ProductStockController extends Controller
         ]);
         $this->checkProductStock($request);
         try {
-            $this->getAuthenticatedUser();
-            $validate_input['user_id'] = Auth::user()->id;
+            
+            $validate_input['user_id'] = $this->getAuthenticatedUser()->id;
             ProductStock::create($validate_input);
 
             $response['status'] = true;
@@ -58,30 +58,9 @@ class ProductStockController extends Controller
     }
     public function getProductStock()
     {
-
-        try {
-            $this->getAuthenticatedUser();
-            $id = Auth::user()->id;
-            $productStockDetail = [];
-            $data = ProductStock::where('user_id',  Auth::user()->id)->get();
-            if (!empty($data)) {
-                foreach ($data as $unitdata) {
-                    $productStock['id'] = $unitdata->id;
-                    $productStock['product_max'] = $unitdata->product_max;
-                    $productStock['product_warn'] = $unitdata->product_warn;
-                    $productStock['product_name'] = $unitdata->product ? $unitdata->product->product_name : 'Old Product';
-                    $productStock['branch_name'] = $unitdata->branch ? $unitdata->branch->name : 'Old Branch';
-                    $productStock['product_count'] = $unitdata->product_count;
-                    array_push($productStockDetail, $productStock);
-                }
-            }
-            $response['status'] = true;
-            $response['data'] = $productStockDetail;
-        } catch (Exception $e) {
-            $response['status'] = false;
-            $response['message'] = $e->getMessage();
-        }
-        return $response;
+          $id = $this->getAuthenticatedUser()->id;
+            $data = ProductStock::where('user_id',  $id)->with('branch')->with('product')->paginate(2);
+        return $data;
     }
 
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\User;
+use App\UserSetting;
 use Faker\Provider\Image;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -10,8 +11,8 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\ValidationException;
 use phpDocumentor\Reflection\Types\Null_;
+use Illuminate\Validation\ValidationException;
 
 class UsersController extends Controller
 { 
@@ -58,7 +59,7 @@ class UsersController extends Controller
         "password" => "required|min:7|string",
         "type" => "required",
     ]);
-         User::create([
+        $user_detail = User::create([
         'name' => $request->input('name'), 
         'email' => $request->input('email'), 
         'password' => Hash::make($request->input('password')),   
@@ -66,6 +67,13 @@ class UsersController extends Controller
         'bio' => $request->input('bio'), 
         'type' => $request->input('type'), 
         'photo' => 'profile.png',
+        ]);
+        UserSetting::create([
+            'user_id' => $user_detail->id,
+            'branch_id' => 0,
+            'profile_pic' => 'profile.png',
+            'user_color'=>'white',
+            'user_setting_status' => 'update'
         ]);
        return $request->all();
     }
